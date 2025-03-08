@@ -1,0 +1,6 @@
+import joblib
+
+# Save the trained model
+joblib.dump(model, 'deal_risk_model.pkl')
+
+print("Model saved successfully!")
