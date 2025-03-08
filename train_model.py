@@ -8,11 +8,11 @@ import joblib
 
 # Simulated Salesforce Opportunity Data
 data = pd.DataFrame({
-    'Amount': [10000, 50000, 20000, 80000, 15000, 40000, 25000, 60000, 90000, 30000],
-    'StageName': [1, 3, 2, 4, 1, 3, 2, 4, 5, 3],  # Encoded Stage Names
+    'DealAmount': [10000, 50000, 20000, 80000, 15000, 40000, 25000, 60000, 90000, 30000],
+    'Stage': [1, 3, 2, 4, 1, 3, 2, 4, 5, 3],  # Encoded Stage Names
     'DaysToClose': [30, 60, 15, 90, 20, 45, 35, 70, 100, 55],
-    'LeadSource': [0, 1, 0, 1, 0, 2, 2, 1, 0, 2],  # Encoded Lead Sources
-    'Probability': [0.8, 0.2, 0.6, 0.1, 0.7, 0.5, 0.4, 0.2, 0.9, 0.3],
+    'Lead_Source': [0, 1, 0, 1, 0, 2, 2, 1, 0, 2],  # Encoded Lead Sources
+    'DealProbability': [0.8, 0.2, 0.6, 0.1, 0.7, 0.5, 0.4, 0.2, 0.9, 0.3],
     'CompetitorPresence': [1, 0, 0, 1, 0, 1, 0, 0, 1, 0],
     'EngagementScore': [0.9, 0.3, 0.7, 0.2, 0.8, 0.5, 0.4, 0.6, 0.95, 0.55],
     'Won': [1, 0, 1, 0, 1, 1, 0, 0, 1, 0]  # Target variable (1 = Won, 0 = Lost)
