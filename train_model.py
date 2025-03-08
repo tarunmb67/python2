@@ -34,8 +34,8 @@ X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, 
 
 # Define Deep Learning Model
 model = tf.keras.Sequential([
-    tf.keras.layers.Dense(16, activation='relu', input_shape=(X_train.shape[1],)),
-    tf.keras.layers.Dense(8, activation='relu'),
+    tf.keras.layers.Dense(8, activation='relu', input_shape=(X_train.shape[1],)),
+    tf.keras.layers.Dense(4, activation='relu'),
     tf.keras.layers.Dense(1, activation='sigmoid')  # Binary classification
 ])
 
@@ -43,7 +43,7 @@ model = tf.keras.Sequential([
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # Train Model
-model.fit(X_train, y_train, epochs=50, batch_size=4, validation_data=(X_test, y_test))
+model.fit(X_train, y_train, epochs=30, batch_size=2, validation_data=(X_test, y_test))
 
 # Save Model
 model.save('deal_risk_model.h5')
