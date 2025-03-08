@@ -33,10 +33,10 @@ joblib.dump(scaler, 'scaler.pkl')
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
 # Define Deep Learning Model
-model = keras.Sequential([
-    keras.layers.Dense(16, activation='relu', input_shape=(X_train.shape[1],)),
-    keras.layers.Dense(8, activation='relu'),
-    keras.layers.Dense(1, activation='sigmoid')  # Binary classification
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(16, activation='relu', input_shape=(X_train.shape[1],)),
+    tf.keras.layers.Dense(8, activation='relu'),
+    tf.keras.layers.Dense(1, activation='sigmoid')  # Binary classification
 ])
 
 # Compile Model
@@ -47,3 +47,5 @@ model.fit(X_train, y_train, epochs=50, batch_size=4, validation_data=(X_test, y_
 
 # Save Model
 model.save('deal_risk_model.h5')
+
+print("✅ Model trained and saved successfully!")
