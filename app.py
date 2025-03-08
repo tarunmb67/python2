@@ -17,9 +17,9 @@ def predict():
         
         # Convert input data to array
         features = np.array([[
-            data['customer_engagement'], data['competitor_presence'], data['Amount'], 
-            data['StageName'], data['DaysToClose'], data['LeadSource'], 
-            data['Probability'], data['CompetitorPresence'], data['EngagementScore']
+            data['Amount'], data['StageName'], data['DaysToClose'], 
+            data['LeadSource'], data['Probability'], data['CompetitorPresence'], 
+            data['EngagementScore']
         ]])
 
         # Normalize input

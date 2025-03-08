@@ -8,8 +8,6 @@ import joblib
 
 # Simulated Salesforce Opportunity Data
 data = pd.DataFrame({
-    'customer_engagement': [0.8, 0.2, 0.6, 0.1, 0.7, 0.5, 0.3, 0.9, 0.4, 1.0],
-    'competitor_presence': [1, 0, 0, 1, 0, 1, 0, 1, 1, 0],
     'Amount': [10000, 50000, 20000, 80000, 15000, 40000, 25000, 60000, 90000, 30000],
     'StageName': [1, 3, 2, 4, 1, 3, 2, 4, 5, 3],  # Encoded Stage Names
     'DaysToClose': [30, 60, 15, 90, 20, 45, 35, 70, 100, 55],
