@@ -34,9 +34,10 @@ X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, 
 
 # Define Deep Learning Model
 model = tf.keras.Sequential([
-    tf.keras.layers.Dense(8, activation='relu', input_shape=(X_train.shape[1],)),
-    tf.keras.layers.Dense(4, activation='relu'),
-    tf.keras.layers.Dense(1, activation='sigmoid')  # Binary classification
+    tf.keras.layers.Dense(32, activation='relu', input_shape=(X_train.shape[1],)),
+    tf.keras.layers.Dense(16, activation='relu'),
+    tf.keras.layers.Dense(8, activation='relu'),
+    tf.keras.layers.Dense(1, activation='sigmoid')  # Output layer
 ])
 
 # Compile Model
@@ -47,5 +48,14 @@ model.fit(X_train, y_train, epochs=30, batch_size=2, validation_data=(X_test, y_
 
 # Save Model
 model.save('deal_risk_model.h5')
+
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+tflite_model = converter.convert()
+
+# Save the TFLite model
+with open("deal_risk_model.tflite", "wb") as f:
+    f.write(tflite_model)
+
+print("✅ Model converted and saved as deal_risk_model.tflite")
 
 print("✅ Model trained and saved successfully!")
