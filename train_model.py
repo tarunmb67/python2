@@ -19,9 +19,16 @@ data = pd.DataFrame({
     'Won': [1, 0, 1, 0, 1, 1, 0, 0, 1, 0]  # Target variable (1 = Won, 0 = Lost)
 })
 
+# Add "MarketSentiment" to Training Data
+data['MarketSentiment'] = np.random.uniform(-1, 1, size=len(data))  # Simulated values
+
+# Generate Simulated Customer Interaction Sentiment (For Training)
+data['InteractionSentiment'] = np.random.uniform(-1, 1, size=len(data))
+
 # Encode Categorical Variables
 categorical_features = ['Stage', 'LeadSource', 'Industry']
 data_encoded = pd.get_dummies(data, columns=categorical_features)
+
 
 # Split Features & Target
 X = data_encoded.drop(columns=['Won'])
