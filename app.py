@@ -7,6 +7,8 @@ import requests
 from textblob import TextBlob
 from serpapi import GoogleSearch
 from Salesforce_Autehntication import SalesforceAuth
+import nltk
+nltk.download('punkt')
 
 # Load Trained Model & Scaler
 model = tf.keras.models.load_model('deal_risk_model.h5')
