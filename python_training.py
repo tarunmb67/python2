@@ -6,8 +6,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
+from tensorflow import keras
 from flask import Flask, request, jsonify
 import joblib  # To save the scaler and encoder
 
@@ -37,12 +36,12 @@ X_processed = preprocessor.fit_transform(X)
 X_train, X_test, y_train, y_test = train_test_split(X_processed, y, test_size=0.2, random_state=42)
 
 # Step 3: Build the TensorFlow Model
-model = Sequential([
-    Dense(64, activation='relu', input_shape=(X_train.shape[1],)),  # Input layer
-    Dropout(0.2),  # Dropout to prevent overfitting
-    Dense(32, activation='relu'),  # Hidden layer
-    Dropout(0.2),
-    Dense(1, activation='sigmoid')  # Output layer (binary classification)
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(64, activation='relu', input_shape=(X_train.shape[1],)),  # Input layer
+    tf.keras.layers.Dropout(0.2),  # Dropout to prevent overfitting
+    tf.keras.layers.Dense(32, activation='relu'),  # Hidden layer
+    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.Dense(1, activation='sigmoid')  # Output layer (binary classification)
 ])
 
 # Compile the model

@@ -1,32 +1,32 @@
-﻿Id,Amount,StageName,LeadSource,Industry
-0062w00000JxWMrAAN,350000,Closed Won,External Referral,Hospitality
-0062w00000JxWMsAAN,915000,Closed Won,Partner,Energy
-0062w00000JxWMtAAN,100006,Proposal/Price Quote,Employee Referral,Education
-0062w00000JxWMuAAN,120000,Perception Analysis,External Referral,Transportation
-0062w00000JxWMvAAN,90000,Closed Won,Public Relations,Education
-0062w00000JxWMwAAN,105000,Negotiation/Review,Web,Biotechnology
-0062w00000JxWMxAAN,235000,Closed Won,External Referral,Energy
-0062w00000JxWMyAAN,440000,Closed Won,External Referral,Energy
-0062w00000JxWMzAAN,90000,Closed Won,External Referral,Hospitality
-0062w00000JxWN0AAN,120000,Closed Won,External Referral,Energy
-0062w00000JxWMZAA3,15000,Qualification,Purchased List,Consulting
-0062w00000JxWMaAAN,125000,Negotiation/Review,,Energy
-0062w00000JxWMbAAN,220000,Closed Won,Trade Show,Transportation
-0062w00000JxWN1AAN,210000,Closed Won,External Referral,Hospitality
-0062w00000JxWN2AAN,675000,Needs Analysis,,Energy
-0062w00000JxWN3AAN,35000,Id. Decision Makers,,Biotechnology
-0062w00000JxWMmAAN,30000,Qualification,Partner,Biotechnology
-0062w00000JxWMeAAN,270000,Proposal/Price Quote,,Energy
-0062w00000JxWMfAAN,120000,Closed Won,Partner,Energy
-0062w00000JxWMgAAN,250000,Value Proposition,Employee Referral,Hospitality
-0062w00000JxWMhAAN,10000,Prospecting,Word of mouth,Biotechnology
-0062w00000JxWMcAAN,85000,Closed Won,Partner,Biotechnology
-0062w00000JxWMdAAN,15000,Qualification,,Hospitality
-0062w00000JxWMpAAN,1030000,Prospecting,Word of mouth,Hospitality
-0062w00000JxWMqAAN,270000,Value Proposition,Partner,Energy
-0062w00000JxWMjAAN,100000,Prospecting,Phone Inquiry,Construction
-0062w00000JxWMkAAN,1230000,Qualification,External Referral,Transportation
-0062w00000JxWMlAAN,105000,Prospecting,,Biotechnology
-0062w00000JxWMnAAN,270000,Negotiation/Review,,Energy
-0062w00000JxWMoAAN,50000,Closed Won,Word of mouth,Biotechnology
-0062w00000JxWMiAAN,50000,Closed Won,Public Relations,Education
+﻿Id,Amount,StageName,LeadSource,Industry,Target
+0062w00000JxWMrAAN,350000,Closed Won,External Referral,Hospitality,0
+0062w00000JxWMsAAN,915000,Closed Won,Partner,Energy,0
+0062w00000JxWMtAAN,100006,Proposal/Price Quote,Employee Referral,Education,0
+0062w00000JxWMuAAN,120000,Perception Analysis,External Referral,Transportation,0
+0062w00000JxWMvAAN,90000,Closed Won,Public Relations,Education,0
+0062w00000JxWMwAAN,105000,Negotiation/Review,Web,Biotechnology,1
+0062w00000JxWMxAAN,235000,Closed Won,External Referral,Energy,1
+0062w00000JxWMyAAN,440000,Closed Won,External Referral,Energy,1
+0062w00000JxWMzAAN,90000,Closed Won,External Referral,Hospitality,1
+0062w00000JxWN0AAN,120000,Closed Won,External Referral,Energy,1
+0062w00000JxWMZAA3,15000,Qualification,Purchased List,Consulting,1
+0062w00000JxWMaAAN,125000,Negotiation/Review,,Energy,0
+0062w00000JxWMbAAN,220000,Closed Won,Trade Show,Transportation,0
+0062w00000JxWN1AAN,210000,Closed Won,External Referral,Hospitality,0
+0062w00000JxWN2AAN,675000,Needs Analysis,,Energy,0
+0062w00000JxWN3AAN,35000,Id. Decision Makers,,Biotechnology,0
+0062w00000JxWMmAAN,30000,Qualification,Partner,Biotechnology,0
+0062w00000JxWMeAAN,270000,Proposal/Price Quote,,Energy,0
+0062w00000JxWMfAAN,120000,Closed Won,Partner,Energy,0
+0062w00000JxWMgAAN,250000,Value Proposition,Employee Referral,Hospitality,0
+0062w00000JxWMhAAN,10000,Prospecting,Word of mouth,Biotechnology,0
+0062w00000JxWMcAAN,85000,Closed Won,Partner,Biotechnology,0
+0062w00000JxWMdAAN,15000,Qualification,,Hospitality,0
+0062w00000JxWMpAAN,1030000,Prospecting,Word of mouth,Hospitality,0
+0062w00000JxWMqAAN,270000,Value Proposition,Partner,Energy,0
+0062w00000JxWMjAAN,100000,Prospecting,Phone Inquiry,Construction,0
+0062w00000JxWMkAAN,1230000,Qualification,External Referral,Transportation,0
+0062w00000JxWMlAAN,105000,Prospecting,,Biotechnology,0
+0062w00000JxWMnAAN,270000,Negotiation/Review,,Energy,0
+0062w00000JxWMoAAN,50000,Closed Won,Word of mouth,Biotechnology,0
+0062w00000JxWMiAAN,50000,Closed Won,Public Relations,Education,0

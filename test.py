@@ -1,33 +1,27 @@
 import numpy as np
-import tensorflow as tf
 import joblib
+import tensorflow as tf
+import pandas as pd
 
-# ✅ Load the TFLite model
-tflite_model_path = "deal_risk_model.tflite"
-interpreter = tf.lite.Interpreter(model_path=tflite_model_path)
-interpreter.allocate_tensors()
+# Load Model & Scaler
+model = tf.keras.models.load_model('deal_risk_model.h5')
+scaler = joblib.load('scaler.pkl')
 
-# ✅ Get input and output details
-input_details = interpreter.get_input_details()
-output_details = interpreter.get_output_details()
+# Sample Test Opportunity Data (Modify as Needed)
+test_data = pd.DataFrame({
+    'DealAmount': [70000],
+    'DaysToClose': [40],
+    'CompetitorPresence': [1],
+    'EngagementScore': [0.75],
+    'Stage_Closed': [0], 'Stage_Negotiation': [1], 'Stage_Proposal': [0], 'Stage_Prospecting': [0], 'Stage_Won': [0],
+    'LeadSource_Event': [0], 'LeadSource_Phone': [0], 'LeadSource_Referral': [1], 'LeadSource_Web': [0],
+    'Industry_Finance': [1], 'Industry_Health': [0], 'Industry_Retail': [0], 'Industry_Tech': [0]
+})
 
-# ✅ Load the saved StandardScaler
-scaler = joblib.load("scaler.pkl")
+# Scale Input Data
+test_scaled = scaler.transform(test_data)
 
-# ✅ Define a sample new deal (raw features)
-new_deal = np.array([[20000, 2, 30, 1, 0.6, 0, 0.7]])  # Adjust values as per your feature set
+# Predict Risk Score
+risk_score = model.predict(test_scaled)
 
-# ✅ Scale the input using the same scaler
-new_deal_scaled = scaler.transform(new_deal)
-
-# ✅ Set input tensor
-interpreter.set_tensor(input_details[0]['index'], new_deal_scaled.astype(np.float32))
-
-# ✅ Run inference
-interpreter.invoke()
-
-# ✅ Get the prediction result
-prediction = interpreter.get_tensor(output_details[0]['index'])
-
-# ✅ Display predicted risk score
-print(f"🔮 Predicted Deal Risk Score: {prediction[0][0]:.4f}")
+print(f"🔍 Predicted Deal Risk Score: {risk_score[0][0]:.2f}")

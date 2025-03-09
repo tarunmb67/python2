@@ -1,56 +1,43 @@
 from flask import Flask, request, jsonify
-import numpy as np
 import tensorflow as tf
 import joblib
+import pandas as pd
+import numpy as np
+
+# Load Trained Model & Scaler
+model = tf.keras.models.load_model('deal_risk_model.h5')
+scaler = joblib.load('scaler.pkl')
 
 app = Flask(__name__)
 
-# ✅ Load the TFLite model
-tflite_model_path = "deal_risk_model.tflite"
-interpreter = tf.lite.Interpreter(model_path=tflite_model_path)
-interpreter.allocate_tensors()
-
-# ✅ Get input and output details
-input_details = interpreter.get_input_details()
-output_details = interpreter.get_output_details()
-
-# ✅ Load the trained scaler
-scaler = joblib.load("scaler.pkl")
-
-@app.route("/")
-def home():
-    return "🚀 AI Model is Running!"
-
-@app.route("/predict", methods=["POST","GET"])
+@app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # ✅ Get JSON input from request
+        # Get JSON data from Salesforce
         data = request.get_json()
-        
-        # ✅ Convert input into NumPy array
-        features = np.array([data["features"]])  # Example: {"features": [20000, 2, 30, 1, 0.6, 0, 0.7]}
 
-        # ✅ Scale input using the saved scaler
-        features_scaled = scaler.transform(features)
+        # Convert JSON to Pandas DataFrame
+        input_data = pd.DataFrame([data])
 
-        # ✅ Set input tensor
-        interpreter.set_tensor(input_details[0]['index'], features_scaled.astype(np.float32))
+        # Ensure All Categorical Columns Exist
+        category_columns = ['Stage_Closed', 'Stage_Negotiation', 'Stage_Proposal', 'Stage_Prospecting', 'Stage_Won',
+                            'LeadSource_Event', 'LeadSource_Phone', 'LeadSource_Referral', 'LeadSource_Web',
+                            'Industry_Finance', 'Industry_Health', 'Industry_Retail', 'Industry_Tech']
 
-        # ✅ Run inference
-        interpreter.invoke()
+        for col in category_columns:
+            if col not in input_data:
+                input_data[col] = 0  # Add missing columns as 0
 
-        # ✅ Get the prediction result
-        prediction = interpreter.get_tensor(output_details[0]['index'])
+        # Scale Input Data
+        input_scaled = scaler.transform(input_data)
 
-        risk_level = "High" if prediction < 0.5 else "Low"
+        # Predict Risk Score
+        risk_score = model.predict(input_scaled)[0][0]
 
-        # ✅ Format the output
-        response = ({'Predicted Deal Risk Score': float(prediction[0][0]), 'risk_score': risk_level})
-        
-        return jsonify(response)
+        return jsonify({"risk_score": float(risk_score)})
 
     except Exception as e:
-        return jsonify({"error": str(e)})
+        return jsonify({"error": str(e)}), 500
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
